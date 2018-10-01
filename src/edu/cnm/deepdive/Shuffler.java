@@ -14,25 +14,17 @@ public class Shuffler {
       deck[i] = i + 1;
     }
     System.out.println(Arrays.toString(deck));
-    shuffleIterate(deck);
+    shuffle(deck);
     System.out.println(Arrays.toString(deck));
 
+    String[] names = {"Travis", "Brad", "Adam", "Rad"};
+    System.out.println(Arrays.toString(names));
+    shuffle(names);
+    System.out.println(Arrays.toString(names));
   }
 
-  public static void shuffleIterate(int[] deck) {
+  public static void shuffle(int[] deck) {
     shuffle(deck, new Random());
-  }
-
-
-  private static void shuffle(Integer[] deck) {
-    Random rng = new Random();
-    Integer[] newDeck = new Integer[52];
-    ArrayList<Integer> deckList =
-        new ArrayList<>(Arrays.asList(deck));
-    for (int i = 0; i < deck.length; i++) {
-      newDeck[i] = deckList.remove(rng.nextInt(deckList.size()));
-    }
-    System.arraycopy(newDeck, 0, deck, 0, deck.length);
   }
 
   public static void shuffle(int[] deck, Random rng) {
@@ -56,7 +48,8 @@ public class Shuffler {
 
     }
   }
-  public static void shuffleIterate(byte[] deck) {
+
+  public static void shuffle(byte[] deck) {
     shuffle(deck, new Random());
   }
 
@@ -73,7 +66,7 @@ public class Shuffler {
     }
   }
 
-  public static void shuffleIterate(long[] deck) {
+  public static void shuffle(long[] deck) {
     shuffle(deck, new Random());
   }
 
@@ -87,7 +80,8 @@ public class Shuffler {
 
     }
   }
-  public static void shuffleIterate(char[] deck) {
+
+  public static void shuffle(char[] deck) {
     shuffle(deck, new Random());
   }
 
@@ -101,7 +95,8 @@ public class Shuffler {
 
     }
   }
-  public static void shuffleIterate(short[] deck) {
+
+  public static void shuffle(short[] deck) {
     shuffle(deck, new Random());
   }
 
@@ -115,7 +110,8 @@ public class Shuffler {
 
     }
   }
-  public static void shuffleIterate(double[] deck) {
+
+  public static void shuffle(double[] deck) {
     shuffle(deck, new Random());
   }
 
@@ -129,7 +125,22 @@ public class Shuffler {
 
     }
   }
-  public static void shuffleIterate(float[] deck) {
+
+  public static void shuffle(float[] deck) {
+    shuffle(deck, new Random());
+  }
+
+  public static <T> void shuffle(T[] deck, Random rng) {
+    for (int i = deck.length - 1; i > 0; i--) {
+      int swap = rng.nextInt(i + 1);
+      T temp = deck[swap];
+      deck[swap] = deck[i];
+      deck[i] = temp;
+
+    }
+  }
+
+  public static <T> void shuffle(T[] deck) {
     shuffle(deck, new Random());
   }
 
